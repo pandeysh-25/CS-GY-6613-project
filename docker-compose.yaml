@@ -1,11 +1,11 @@
 version: '3.9'
 
 services:
-  cs-gy--6613-assignments:
+  cs-gy-6613-project:
     build:
       context: "."
       dockerfile: ./docker/Dockerfile.dev.gpu 
-    image: cs-gy--6613-assignments
+    image: cs-gy-6613-project
     platform: linux/arm64  
     shm_size: '8gb'
     user: vscode
@@ -13,9 +13,9 @@ services:
     environment:
       - PLATFORM=macos
     networks:
-      - cs-gy--6613-assignments-net
+      - cs-gy-6613-project-net
 networks:
-  cs-gy--6613-assignments-net:
+  cs-gy-6613-project-net:
     driver: bridge
 
 volumes:

@@ -2,7 +2,7 @@
 members = ["cli", "artagents"]
 
 [project]
-name = "cs-gy--6613-assignments"
+name = "cs-gy-6613-project"
 version = "0.1.0"
 description = "Course docker container"
 authors = [
