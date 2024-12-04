@@ -173,6 +173,8 @@ distlib==0.3.8
 distro==1.9.0
     # via dvc
     # via iterative-telemetry
+dnspython==2.7.0
+    # via pymongo
 dpath==2.2.0
     # via dvc
 dulwich==0.22.1
@@ -627,6 +629,7 @@ pygtrie==2.5.0
     # via sqltrie
 pyjwt==2.8.0
     # via clearml
+pymongo==4.10.1
 pynndescent==0.5.13
     # via umap-learn
 pynvml==11.5.3
