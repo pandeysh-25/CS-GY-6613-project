@@ -90,6 +90,8 @@ botocore==1.35.7
     # via boto3
     # via s3transfer
 bottleneck==1.4.0
+cachetools==5.5.0
+    # via google-auth
 captum==0.7.0
 celery==5.4.0
     # via dvc
@@ -115,6 +117,7 @@ click==8.1.7
     # via click-plugins
     # via click-repl
     # via histoprint
+    # via nltk
     # via ray
     # via typer
 click-didyoumean==0.3.1
@@ -159,6 +162,7 @@ decorator==5.1.1
     # via ipython
 defusedxml==0.7.1
     # via nbconvert
+    # via youtube-transcript-api
 deprecation==2.1.0
     # via cloudevents
 dictdiffer==0.9.0
@@ -212,6 +216,7 @@ filelock==3.15.4
     # via iterative-telemetry
     # via ray
     # via torch
+    # via transformers
     # via virtualenv
 flatten-dict==0.4.2
     # via dvc
@@ -255,7 +260,17 @@ gitdb==4.0.11
     # via gitpython
 gitpython==3.1.43
     # via scmrepo
+google-api-core==2.23.0
+    # via google-api-python-client
+google-api-python-client==2.154.0
+google-auth==2.36.0
+    # via google-api-core
+    # via google-api-python-client
+    # via google-auth-httplib2
+google-auth-httplib2==0.2.0
+    # via google-api-python-client
 googleapis-common-protos==1.65.0
+    # via google-api-core
     # via grpcio-status
 grandalf==0.8
     # via dvc
@@ -267,25 +282,38 @@ grpcio==1.66.1
     # via dapr
     # via grpcio-status
     # via grpcio-tools
+    # via qdrant-client
     # via tensorboard
 grpcio-status==1.66.1
     # via dapr
 grpcio-tools==1.64.1
+    # via qdrant-client
 gto==1.7.1
     # via dvc
     # via dvclive
 h11==0.14.0
     # via httpcore
+h2==4.1.0
+    # via httpx
 hist==2.8.0
 histoprint==2.4.0
     # via hist
+hpack==4.0.0
+    # via h2
 httpcore==1.0.5
     # via httpx
+httplib2==0.22.0
+    # via google-api-python-client
+    # via google-auth-httplib2
 httpx==0.27.2
     # via jupyterlab
+    # via qdrant-client
 huggingface-hub==0.24.6
     # via datasets
+    # via sentence-transformers
     # via timm
+    # via tokenizers
+    # via transformers
 hydra-colorlog==1.2.0
 hydra-core==1.3.2
     # via dvc
@@ -293,6 +321,8 @@ hydra-core==1.3.2
     # via hydra-optuna-sweeper
     # via lightly
 hydra-optuna-sweeper==1.2.0
+hyperframe==6.0.1
+    # via h2
 identify==2.6.0
     # via pre-commit
 idna==3.8
@@ -333,6 +363,7 @@ jmespath==1.0.1
     # via botocore
 joblib==1.4.2
     # via imbalanced-learn
+    # via nltk
     # via pynndescent
     # via scikit-learn
 json5==0.9.25
@@ -459,6 +490,7 @@ networkx==3.3
     # via dvc
     # via scikit-image
     # via torch
+nltk==3.9.1
 nodeenv==1.9.1
     # via pre-commit
 notebook==7.2.2
@@ -494,6 +526,7 @@ numpy==2.0.2
     # via pandas
     # via pyarrow
     # via pycocotools
+    # via qdrant-client
     # via scikit-image
     # via scikit-learn
     # via scipy
@@ -503,6 +536,7 @@ numpy==2.0.2
     # via tifffile
     # via torchmetrics
     # via torchvision
+    # via transformers
     # via uhi
     # via umap-learn
 omegaconf==2.3.0
@@ -540,6 +574,7 @@ packaging==24.1
     # via ray
     # via scikit-image
     # via torchmetrics
+    # via transformers
 pandas==2.2.2
     # via datasets
     # via fastparquet
@@ -563,6 +598,7 @@ pillow==10.4.0
     # via lightly-utils
     # via matplotlib
     # via scikit-image
+    # via sentence-transformers
     # via tensorboard-logger
     # via torchvision
 pinecone-client==5.0.1
@@ -575,6 +611,8 @@ platformdirs==3.11.0
     # via dvc
     # via jupyter-core
     # via virtualenv
+portalocker==2.10.1
+    # via qdrant-client
 pre-commit==3.8.0
 prettytable==3.11.0
     # via cliff
@@ -584,11 +622,15 @@ prompt-toolkit==3.0.47
     # via click-repl
     # via ipython
     # via jupyter-console
+proto-plus==1.25.0
+    # via google-api-core
 protobuf==5.28.0
     # via dapr
+    # via google-api-core
     # via googleapis-common-protos
     # via grpcio-status
     # via grpcio-tools
+    # via proto-plus
     # via ray
     # via tensorboard
     # via tensorboard-logger
@@ -605,12 +647,18 @@ pure-eval==0.2.3
     # via stack-data
 pyarrow==17.0.0
     # via datasets
+pyasn1==0.6.1
+    # via pyasn1-modules
+    # via rsa
+pyasn1-modules==0.4.1
+    # via google-auth
 pycocotools==2.0.8
 pycparser==2.22
     # via cffi
 pydantic==2.8.2
     # via gto
     # via lightly
+    # via qdrant-client
 pydantic-core==2.20.1
     # via pydantic
 pydot==3.0.1
@@ -638,6 +686,7 @@ pyparsing==3.1.4
     # via clearml
     # via dvc
     # via grandalf
+    # via httplib2
     # via matplotlib
     # via pydot
 pyperclip==1.9.0
@@ -674,27 +723,35 @@ pyyaml==6.0.2
     # via pytorch-lightning
     # via ray
     # via timm
+    # via transformers
 pyzmq==26.2.0
     # via ipykernel
     # via jupyter-client
     # via jupyter-console
     # via jupyter-server
+qdrant-client==1.12.1
 ray==2.35.0
 referencing==0.35.1
     # via clearml
     # via jsonschema
     # via jsonschema-specifications
     # via jupyter-events
+regex==2024.11.6
+    # via nltk
+    # via transformers
 requests==2.32.3
     # via clearml
     # via datasets
     # via dvc
     # via dvc-studio-client
+    # via google-api-core
     # via huggingface-hub
     # via iterative-telemetry
     # via jupyterlab-server
     # via lightly
     # via ray
+    # via transformers
+    # via youtube-transcript-api
 rfc3339-validator==0.1.4
     # via jsonschema
     # via jupyter-events
@@ -709,6 +766,8 @@ rootutils==1.0.7
 rpds-py==0.20.0
     # via jsonschema
     # via referencing
+rsa==4.9
+    # via google-auth
 ruamel-yaml==0.18.6
     # via dvc
     # via dvclive
@@ -724,10 +783,12 @@ s3transfer==0.10.2
     # via boto3
 safetensors==0.4.4
     # via timm
+    # via transformers
 scikit-image==0.24.0
 scikit-learn==1.5.1
     # via imbalanced-learn
     # via pynndescent
+    # via sentence-transformers
     # via umap-learn
 scipy==1.14.1
     # via imbalanced-learn
@@ -735,6 +796,7 @@ scipy==1.14.1
     # via pynndescent
     # via scikit-image
     # via scikit-learn
+    # via sentence-transformers
     # via tensorboard-logger
     # via umap-learn
 scmrepo==3.3.7
@@ -746,6 +808,7 @@ semver==3.0.2
     # via gto
 send2trash==1.8.3
     # via jupyter-server
+sentence-transformers==3.3.1
 setuptools==74.1.1
     # via grpcio-tools
     # via jupyterlab
@@ -811,6 +874,8 @@ tifffile==2024.8.30
 timm==1.0.9
 tinycss2==1.3.0
     # via nbconvert
+tokenizers==0.21.0
+    # via transformers
 toml==0.10.2
 tomlkit==0.13.2
     # via dvc
@@ -820,6 +885,7 @@ torch==2.4.0
     # via lightning
     # via pytorch-lightning
     # via s3torchconnector
+    # via sentence-transformers
     # via timm
     # via torchmetrics
     # via torchvision
@@ -849,10 +915,13 @@ tqdm==4.66.5
     # via huggingface-hub
     # via lightly
     # via lightning
+    # via nltk
     # via optuna
     # via pinecone-client
     # via pytorch-lightning
     # via scmrepo
+    # via sentence-transformers
+    # via transformers
     # via umap-learn
 traitlets==5.14.3
     # via comm
@@ -869,6 +938,8 @@ traitlets==5.14.3
     # via nbclient
     # via nbconvert
     # via nbformat
+transformers==4.47.0
+    # via sentence-transformers
 typer==0.12.5
     # via gto
 types-python-dateutil==2.9.0.20240821
@@ -898,12 +969,15 @@ uhi==0.4.0
 umap-learn==0.5.6
 uri-template==1.3.0
     # via jsonschema
+uritemplate==4.1.1
+    # via google-api-python-client
 urllib3==2.2.2
     # via botocore
     # via clearml
     # via dulwich
     # via lightly
     # via pinecone-client
+    # via qdrant-client
     # via requests
     # via types-requests
 vine==5.1.0
@@ -937,5 +1011,6 @@ xxhash==3.5.0
     # via datasets
 yarl==1.9.8
     # via aiohttp
+youtube-transcript-api==0.6.3
 zc-lockfile==3.0.post1
     # via dvc
