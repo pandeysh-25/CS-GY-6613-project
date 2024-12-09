@@ -1,20 +1,24 @@
-# Introduction
+# CS-GY 6613: Artificial Intelligence Project
 
-## What is this repository?
+## Team Information
 
-This is a template docker-based dev environment. It currently supports NVIDIA GPUs but with slight modifications it can target for x86 CPUs and Apple silicon chips. 
+Team GitHub IDs:
+* Shashank Pandey: ([pandeysh-25](https://github.com/pandeysh-25)), NetID: sp8108
+* Bhavik Patwa: ([Bhavik-Patwa](https://github.com/Bhavik-Patwa)), NetID: bnp7995
 
-It currently includes the following tools:
+* HuggingFace ID: sp8108
+* The fine-tuned ROS2 model is loaded at: https://huggingface.co/sp8108/gpt2-finetuned-ros2
 
-* an empty library called `artagents`  where you can include your code / logic that you want to import across assignments and projects.
-* a `assignments` directory with an empty notebook where you need to populate with your code. The notebook can optionally use the artagents library. 
-* a `project` directory for your project source code. The documentation for the project is stored separately in the `docs` directory. 
-* a `docs` directory that contains the source code of a [quarto](https://quarto.org/) based publishing system with markdown (qmd) and `ipynb` notebooks content. You use the docs folder to publish your project work. 
-* an empty CLI tool that should be based on `typer` and you can optionally use to implement a CLI for your project or assignments. 
-* a `tests` directory that should contains `pytest` based tests  for your `artagents` library and all other code.
+## About the Repository
 
-## What should I do with it?
+This repository contains the submission for the AI final project (Fall 2024). The repository structure is as follows:
 
-* Follow all instructions under [resources in the class website](https://pantelis.github.io/aiml-common/resources/environment/) as you will need it to submit your work. 
-* Familiarize yourself with the `rye` package manager as you will use it it build the library and manage all your dependencies. 
-* Follow the instructions in the course web site under resources to [submit your repo to the course's LLM system](https://pantelis.github.io/aiml-common/resources/environment/assignment-submission.html) (Canvas/Brightspace). 
+Infrastructure:
+* The 'ETL-milestone' notebook details the ETL process and loading of data into MongoDB.
+* The 'featurization-milestone' notebook covers the featurization of our textual data, updating our MongoDB entries, and storing into Qdrant.
+* The 'rag-milestone' notebook goes through the initial implementation of our RAG system, using our processed vector data.
+* The 'finetuning-dataset-generation' notebook covers the process we followed to generate question-answer pairs, which would be used to fine-tune the baseline model. The instructions we obtain from this process are saved in 'instruction_dataset.json'
+
+Results:
+* The 'app.ipynb' notebook covers the Gradio interfacing, showing how we integrate all parts of our pipeline.
+* Our report and results are also in the repository.
